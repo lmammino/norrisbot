@@ -5,7 +5,7 @@
 
 var SlackBot = require('slackbots');
 var request = require('request');
-var token = require('./token'); // get the token from https://<yourorganization>.slack.com/services/new/bot
+var token = process.env.BOT_API_KEY || require('./token'); // get the token from https://<yourorganization>.slack.com/services/new/bot
 
 // create a bot
 var bot = new SlackBot({
