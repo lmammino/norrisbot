@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node bot.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules/.bin/xo data/jokesFetcher.js bot.js"
   },
   "author": "",
   "license": "ISC",
@@ -15,5 +15,14 @@
     "progress": "^1.1.8",
     "request": "^2.60.0",
     "slackbots": "^0.3.0"
+  },
+  "devDependencies": {
+    "xo": "^0.5.2"
+  },
+  "xo": {
+    "space": 4,
+    "rules": {
+      "camelcase" : [2, {"properties": "never"}]
+    }
   }
 }
