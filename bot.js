@@ -16,5 +16,5 @@ var bot = new SlackBot({
 bot.on('start', function() {
     // more information about additional params https://api.slack.com/methods/chat.postMessage
 
-    bot.postMessageToChannel('general', 'Hi guys, roundhouse-kick anyone?');
+    bot.postMessageToChannel('general', 'Hi guys, roundhouse-kick anyone?', {as_user: true});
 });

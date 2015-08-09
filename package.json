@@ -10,6 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "async": "^1.4.1",
+    "csv-stringify": "0.0.8",
+    "progress": "^1.1.8",
     "request": "^2.60.0",
     "slackbots": "^0.3.0"
   }

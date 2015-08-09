@@ -26,6 +26,8 @@ build/Release
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
 
-
 #do not commit real token
 token.js
+
+#do not commit editor config files
+.idea
