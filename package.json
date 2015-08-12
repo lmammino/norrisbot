@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "a Slack bot that kicks asses (roundhouse-kicks to be accurate...)",
   "repository": "https://github.com/lmammino/norrisbot",
-  "main": "bot.js",
+  "main": "lib/norrisbot.js",
   "scripts": {
-    "start": "node bot.js",
-    "test": "node_modules/.bin/xo data/jokesFetcher.js bot.js"
+    "start": "node bin/bot.js",
+    "test": "node_modules/.bin/xo data/jokesFetcher.js bin/bot.js lib/norrisbot.js"
   },
   "author": "",
   "license": "ISC",
