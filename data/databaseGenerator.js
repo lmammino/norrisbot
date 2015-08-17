@@ -6,9 +6,9 @@
  *
  * Usage:
  *
- *   node jokesFetcher.js [destFile]
+ *   node databaseGenerator.js [destFile]
  *
- *   destFile is optional and it will default to "jokes.db"
+ *   destFile is optional and it will default to "norrisbot.db"
  *
  * @author Luciano Mammino <lucianomammino@gmail.com>
  */
@@ -19,7 +19,7 @@ var Async = require('async');
 var ProgressBar = require('progress');
 var sqlite3 = require('sqlite3').verbose();
 
-var outputFile = process.argv[2] || path.resolve(__dirname, 'jokes.db');
+var outputFile = process.argv[2] || path.resolve(__dirname, 'norrisbot.db');
 var db = new sqlite3.Database(outputFile);
 
 // executes an API request to count all the available jokes
@@ -33,6 +33,7 @@ request('http://api.icndb.com/jokes/count', function (error, response, body) {
         // Prepares the database connection in serialized mode
         db.serialize();
         // Creates the database structure
+        db.run('CREATE TABLE IF NOT EXISTS info (name TEXT PRIMARY KEY, val TEXT DEFAULT NULL)');
         db.run('CREATE TABLE IF NOT EXISTS jokes (id INTEGER PRIMARY KEY, joke TEXT, used INTEGER DEFAULT 0)');
         db.run('CREATE INDEX jokes_used_idx ON jokes (used)');
 
@@ -91,6 +92,6 @@ request('http://api.icndb.com/jokes/count', function (error, response, body) {
         return Async.whilst(test, task, onComplete);
     }
 
-    console.log('Error: impossible to count the total number of jokes');
+    console.log('Error: unable to count the total number of jokes');
     process.exit(1);
 });
