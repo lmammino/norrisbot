@@ -2,14 +2,35 @@
   "name": "norrisbot",
   "version": "1.0.0",
   "description": "a Slack bot that kicks asses (roundhouse-kicks to be accurate...)",
-  "repository": "https://github.com/lmammino/norrisbot",
+  "keywords": [
+    "Slack",
+    "bot",
+    "Chuck Norris",
+    "jokes"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lmammino/norrisbot"
+  },
+  "bugs": {
+    "url": "https://github.com/lmammino/norrisbot/issues"
+  },
   "main": "lib/norrisbot.js",
+  "bin": {
+    "norrisbot": "bin/bot.js"
+  },
   "scripts": {
     "start": "node bin/bot.js",
     "test": "node_modules/.bin/xo data/jokesFetcher.js bin/bot.js lib/norrisbot.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": {
+    "name": "Luciano Mammino",
+    "email": "lucianomammino@gmail.com"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.10.0"
+  },
   "dependencies": {
     "async": "^1.4.1",
     "progress": "^1.1.8",
