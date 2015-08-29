@@ -1,8 +1,6 @@
 # norrisbot
 
-[![Build Status](https://travis-ci.org/lmammino/norrisbot.svg?branch=v1.0.0)](https://travis-ci.org/lmammino/norrisbot)
-
-[![npm version](https://badge.fury.io/js/norrisbot.svg)](http://badge.fury.io/js/norrisbot)
+[![Build Status](https://travis-ci.org/lmammino/norrisbot.svg?branch=v1.0.0)](https://travis-ci.org/lmammino/norrisbot) [![npm version](https://badge.fury.io/js/norrisbot.svg)](http://badge.fury.io/js/norrisbot)
 
 The NorrisBot is a Slack bot that kicks asses, roundhouse-kicks to be precise... It's super-powered with Chuck Norris jockes and it aims to make your Slack channel even more "slacker" and enjoyable.
 
