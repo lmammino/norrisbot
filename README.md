@@ -6,6 +6,10 @@ The NorrisBot is a Slack bot that kicks asses, roundhouse-kicks to be precise...
 
 ![Chuck Norris face](icon.jpg)
 
+NorrisBot is loaded with guns and jokes about Chuck Norris and it will tell a random joke every time that someone says “Chuck Norris” in the chatroom.
+
+![The NorrisBot in action](the-norris-bot-in-action.png)
+
 
 ## Installation
 
