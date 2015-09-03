@@ -1,6 +1,6 @@
 {
   "name": "norrisbot",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "a Slack bot that kicks asses (roundhouse-kicks to be accurate...)",
   "keywords": [
     "Slack",
