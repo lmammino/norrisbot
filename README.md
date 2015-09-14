@@ -58,6 +58,10 @@ $ BOT_API_KEY=somesecretkey npm start
 If you find a bug or have an idea about how to improve the NorrisBot you can [open an issue](https://github.com/lmammino/norrisbot/issues) or [submit a pull request](https://github.com/lmammino/norrisbot/pulls), it will definitely make you a better person! :P
 
 
+## The Making of
+
+The NorrisBot has been developed in collaboration with [Scotch.io](https://scotch.io). A [very detailed article](https://scotch.io/tutorials/building-a-slack-bot-with-node-js-and-chuck-norris-super-powers) has been published to explain every single line of code. Enjoy it!
+
 ## License
 
 Licensed under [MIT License](LICENSE). © Luciano Mammino.
