@@ -1,6 +1,6 @@
 # norrisbot
 
-[![Build Status](https://travis-ci.org/lmammino/norrisbot.svg?branch=v1.0.0)](https://travis-ci.org/lmammino/norrisbot) [![npm version](https://badge.fury.io/js/norrisbot.svg)](http://badge.fury.io/js/norrisbot)
+[![Build Status](https://travis-ci.org/lmammino/norrisbot.svg?branch=v1.0.0)](https://travis-ci.org/lmammino/norrisbot) [![npm version](https://badge.fury.io/js/norrisbot.svg)](http://badge.fury.io/js/norrisbot) [![Known Vulnerabilities](https://snyk.io/test/github/lmammino/norrisbot/badge.svg)](https://snyk.io/test/github/lmammino/norrisbot)
 
 [![NPM](https://nodei.co/npm/norrisbot.png)](https://nodei.co/npm/norrisbot/)
 
