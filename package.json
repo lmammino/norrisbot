@@ -35,7 +35,7 @@
     "async": "^1.4.1",
     "progress": "^1.1.8",
     "request": "^2.60.0",
-    "slackbots": "^0.3.0",
+    "slackbots": "^0.5.1",
     "sqlite3": "^3.0.10"
   },
   "devDependencies": {
