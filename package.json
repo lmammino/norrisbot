@@ -21,7 +21,8 @@
   },
   "scripts": {
     "start": "node bin/bot.js",
-    "test": "node_modules/.bin/xo data/jokesFetcher.js bin/bot.js lib/norrisbot.js"
+    "lint": "eslint src",
+    "test": "npm run lint"
   },
   "author": {
     "name": "Luciano Mammino",
@@ -29,27 +30,16 @@
   },
   "license": "MIT",
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=0.12.0"
   },
   "dependencies": {
-    "async": "^1.4.1",
-    "progress": "^1.1.8",
-    "request": "^2.60.0",
-    "slackbots": "^0.5.1",
-    "sqlite3": "^3.0.10"
+    "@slack/client": "^3.9.0"
   },
   "devDependencies": {
-    "xo": "^0.5.2"
-  },
-  "xo": {
-    "space": 4,
-    "rules": {
-      "camelcase": [
-        2,
-        {
-          "properties": "never"
-        }
-      ]
-    }
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.3"
   }
 }
