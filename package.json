@@ -6,7 +6,9 @@
     "Slack",
     "bot",
     "Chuck Norris",
-    "jokes"
+    "jokes",
+    "fun",
+    "humor"
   ],
   "repository": {
     "type": "git",
@@ -20,9 +22,10 @@
     "norrisbot": "bin/bot.js"
   },
   "scripts": {
-    "start": "node bin/bot.js",
+    "start": "babel-node src/norrisbot-cli.js",
     "lint": "eslint src",
-    "test": "npm run lint"
+    "test:unit": "jest src --coverage --verbose",
+    "test": "npm run lint && npm run test:unit"
   },
   "author": {
     "name": "Luciano Mammino",
@@ -33,13 +36,20 @@
     "node": ">=0.12.0"
   },
   "dependencies": {
-    "@slack/client": "^3.9.0"
+    "@slack/client": "^3.9.0",
+    "pino": "^4.3.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-register": "^6.24.1",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
-    "eslint-plugin-react": "^6.10.3"
+    "eslint-plugin-react": "^6.10.3",
+    "jest": "^19.0.2"
   }
 }
