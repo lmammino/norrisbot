@@ -1,17 +1,20 @@
-import { RtmClient, RTM_EVENTS, CLIENT_EVENTS } from '@slack/client';
+import { RtmClient, WebClient, RTM_EVENTS, CLIENT_EVENTS } from '@slack/client';
 import {
   isMessage,
   isMessageToChannel,
   isFromUser,
   messageContainsText,
   filterJokesByCategories,
-  pickRandomJoke,
+  pickRandom,
 } from './utils';
 import jokes from './data/jokes';
+import pictures from './data/pictures';
 
 const defaultOptions = {
   triggerOnWords: ['Chuck Norris', 'norrisbot'],
   specialCategories: ['nerdy'],
+  messageColor: '#590088',
+  usePictures: true,
   logger: console,
   rtmOptions: {},
 };
@@ -21,6 +24,8 @@ const norrisbot = (botToken, options = {}) => {
 
   const opt = Object.assign({}, defaultOptions, options);
   const rtm = new RtmClient(botToken, opt.rtmOptions);
+  const web = new WebClient(botToken);
+
   const allowedJokes = filterJokesByCategories(jokes, opt.specialCategories);
   rtm.on(RTM_EVENTS.MESSAGE, (event) => {
     if (
@@ -29,8 +34,23 @@ const norrisbot = (botToken, options = {}) => {
       !isFromUser(event, botId) &&
       messageContainsText(event, opt.triggerOnWords)
     ) {
-      const joke = pickRandomJoke(allowedJokes);
-      rtm.sendMessage(joke.text, event.channel);
+      const joke = pickRandom(allowedJokes);
+      const msgOptions = {
+        as_user: true,
+        attachments: [
+          {
+            color: opt.messageColor,
+            title: joke.text,
+          },
+        ],
+      };
+
+      if (opt.usePictures) {
+        msgOptions.attachments[0].image_url = pickRandom(pictures);
+      }
+
+      web.chat.postMessage(event.channel, '', msgOptions);
+      opt.logger.info(`Posting message to ${event.channel}`, msgOptions);
     }
   });
 
@@ -41,6 +61,7 @@ const norrisbot = (botToken, options = {}) => {
 
   return {
     rtm,
+    web,
     start() { rtm.start(); },
   };
 };

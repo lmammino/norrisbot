@@ -32,4 +32,4 @@ export const filterJokesByCategories = (jokes, categories) => jokes.filter((joke
   return false;
 });
 
-export const pickRandomJoke = jokes => jokes[Math.floor(Math.random() * jokes.length)];
+export const pickRandom = arr => arr[Math.floor(Math.random() * arr.length)];
