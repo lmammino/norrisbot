@@ -2,15 +2,11 @@
 
 [![Build Status](https://travis-ci.org/lmammino/norrisbot.svg?branch=v1.0.0)](https://travis-ci.org/lmammino/norrisbot) [![npm version](https://badge.fury.io/js/norrisbot.svg)](http://badge.fury.io/js/norrisbot) [![Known Vulnerabilities](https://snyk.io/test/github/lmammino/norrisbot/badge.svg)](https://snyk.io/test/github/lmammino/norrisbot)
 
-[![NPM](https://nodei.co/npm/norrisbot.png)](https://nodei.co/npm/norrisbot/)
-
 The NorrisBot is a Slack bot that kicks asses, roundhouse-kicks to be precise... It's super-powered with Chuck Norris jockes and it aims to make your Slack channel even more "slacker" and enjoyable.
 
-![Chuck Norris face](icon.jpg)
+![Chuck Norris face](assets/norrisbot-logo-small.png)
 
 NorrisBot is loaded with guns and jokes about Chuck Norris and it will tell a random joke every time that someone says “Chuck Norris” in the chatroom.
-
-![The NorrisBot in action](the-norris-bot-in-action.png)
 
 
 ## Installation
@@ -69,7 +65,7 @@ If you find a bug or have an idea about how to improve the NorrisBot you can [op
 
 ## The Making of
 
-The NorrisBot has been developed in collaboration with [Scotch.io](https://scotch.io). A [very detailed article](https://scotch.io/tutorials/building-a-slack-bot-with-node-js-and-chuck-norris-super-powers) has been published to explain every single line of code. It also explains you how to deploy the bot on a free Heroku instance, so you should give it a shot! 
+The NorrisBot has been developed in collaboration with [Scotch.io](https://scotch.io). A [very detailed article](https://scotch.io/tutorials/building-a-slack-bot-with-node-js-and-chuck-norris-super-powers) has been published to explain every single line of code. It also explains you how to deploy the bot on a free Heroku instance, so you should give it a shot!
 
 Enjoy your reading!
 
