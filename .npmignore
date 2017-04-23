@@ -45,3 +45,4 @@ yarn.lock
 .eslintrc.js
 .editorconfig
 .gitignore
+.babel_cache/

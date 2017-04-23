@@ -18,6 +18,9 @@ if (process.env.NORRISBOT_CATEGORIES) {
 if (process.env.NORRISBOT_NO_PICTURES) {
   options.usePictures = false;
 }
+if (process.env.NORRISBOT_MESSAGE_COLOR) {
+  options.messageColor = process.env.NORRISBOT_MESSAGE_COLOR;
+}
 
 const bot = norrisbot(process.env.NORRISBOT_TOKEN, options);
 bot.start();
