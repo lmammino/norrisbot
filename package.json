@@ -19,7 +19,7 @@
   },
   "main": "lib/norrisbot.js",
   "bin": {
-    "norrisbot": "lib/norrisbot"
+    "norrisbot": "lib/norrisbot-cli.js"
   },
   "scripts": {
     "build": "./build.sh",
@@ -38,12 +38,11 @@
   },
   "dependencies": {
     "@slack/client": "^3.9.0",
-    "pino": "^4.3.0"
+    "winston": "^2.3.1"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
-    "babel-loader": "^7.0.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-register": "^6.24.1",
     "eslint": "^3.19.0",

@@ -1,9 +1,19 @@
 #!/usr/bin/env node
 
-import pino from 'pino';
+import winston from 'winston';
 import norrisbot from './norrisbot';
 
-const logger = pino();
+const logger = new winston.Logger({
+  transports: [
+    new (winston.transports.Console)({
+      timestamp() {
+        return (new Date()).toISOString();
+      },
+    }),
+  ],
+});
+
+logger.cli();
 
 if (!process.env.NORRISBOT_TOKEN) {
   logger.error('You must setup the NORRISBOT_TOKEN environment variable before running the bot');
