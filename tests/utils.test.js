@@ -3,7 +3,7 @@ import {
   isMessageToChannel,
   isFromUser,
   messageContainsText,
-} from '../utils';
+} from '../src/utils';
 
 test('It should check if a given event is a message', () => {
   const notAMessage = {

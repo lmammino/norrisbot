@@ -23,10 +23,9 @@
   },
   "scripts": {
     "build": "./build.sh",
-    "postinstall": "NODE_ENV=development yarn && npm run build",
     "start": "lib/norrisbot-cli.js",
     "lint": "eslint src",
-    "test:unit": "jest src --coverage --verbose",
+    "test:unit": "jest tests/* --coverage --verbose",
     "test": "npm run lint && npm run test:unit"
   },
   "author": {
