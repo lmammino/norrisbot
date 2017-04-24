@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import pino from 'pino';
 import norrisbot from './norrisbot';
 
@@ -5,7 +7,7 @@ const logger = pino();
 
 if (!process.env.NORRISBOT_TOKEN) {
   logger.error('You must setup the NORRISBOT_TOKEN environment variable before running the bot');
-  logger.exit(1);
+  process.exit(1);
 }
 
 const options = { logger };
