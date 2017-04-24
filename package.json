@@ -24,7 +24,7 @@
   "scripts": {
     "build": "./build.sh",
     "start": "lib/norrisbot-cli.js",
-    "lint": "eslint src",
+    "lint": "eslint src tests",
     "test:unit": "jest tests/* --coverage --verbose",
     "test": "npm run lint && npm run test:unit",
     "release:tag": "git tag $npm_package_version -a -m 'Version $npm_package_version'"

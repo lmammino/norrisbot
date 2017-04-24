@@ -3,6 +3,8 @@ import {
   isMessageToChannel,
   isFromUser,
   messageContainsText,
+  filterJokesByCategories,
+  pickRandom,
 } from '../src/utils';
 
 test('It should check if a given event is a message', () => {
@@ -93,4 +95,32 @@ test('It should check if a message contains some text', () => {
   expect(messageContainsText(message, ['hello'])).toBe(true);
   expect(messageContainsText(message, ['hello'])).toBe(true);
   expect(messageContainsText(message, ['bruce', 'chuck'])).toBe(true);
+});
+
+test('It should filter jokes by category', () => {
+  const jokes = [
+    { text: 'a', categories: [] },
+    { text: 'b', categories: ['foo'] },
+    { text: 'c', categories: ['bar'] },
+  ];
+
+  const expected1 = [
+    { text: 'a', categories: [] },
+    { text: 'b', categories: ['foo'] },
+  ];
+
+  const expected2 = jokes;
+
+  const filtered1 = filterJokesByCategories(jokes, ['foo']);
+  const filtered2 = filterJokesByCategories(jokes, ['foo', 'bar']);
+
+  expect(filtered1).toEqual(expected1);
+  expect(filtered2).toEqual(expected2);
+});
+
+test('It should pick a random element from an array', () => {
+  const arr = ['a', 'b', 'c', 'd'];
+
+  const rand = pickRandom(arr);
+  expect(arr.includes(rand)).toBe(true);
 });
