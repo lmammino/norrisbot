@@ -1,0 +1,23 @@
+
+machine:
+  node:
+    version: 4.3.2
+  environment:
+    PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
+
+dependencies:
+  pre:
+    - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+  override:
+    - yarn
+  cache_directories:
+    - ~/.cache/yarn
+
+test:
+  override:
+    - yarn test
+  post:
+    - cp -r coverage/lcov-report  $CIRCLE_TEST_REPORTS/coverage
+    - codecov
+    - if [ $CIRCLE_BRANCH = 'master' ]; then npm run build; fi
+    - if [ $CIRCLE_BRANCH = 'master' ]; then npm run release:tag && npm publish; fi

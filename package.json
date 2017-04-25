@@ -27,7 +27,7 @@
     "lint": "eslint src tests",
     "test:unit": "jest tests/* --coverage --verbose",
     "test": "npm run lint && npm run test:unit",
-    "release:tag": "git tag $npm_package_version -a -m 'Version $npm_package_version'"
+    "release:tag": "git tag $npm_package_version && git push --tags"
   },
   "author": {
     "name": "Luciano Mammino",
@@ -47,6 +47,7 @@
     "babel-core": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-register": "^6.24.1",
+    "codecov": "^2.1.0",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
