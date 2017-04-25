@@ -1,6 +1,7 @@
 # norrisbot
 
-[![CircleCI](https://circleci.com/gh/lmammino/norrisbot.svg?style=shield)](https://circleci.com/gh/lmammino/norrisbot) [![npm version](https://badge.fury.io/js/norrisbot.svg)](http://badge.fury.io/js/norrisbot) [![Known Vulnerabilities](https://snyk.io/test/github/lmammino/norrisbot/badge.svg)](https://snyk.io/test/github/lmammino/norrisbot)
+[![CircleCI](https://circleci.com/gh/lmammino/norrisbot.svg?style=shield)](https://circleci.com/gh/lmammino/norrisbot) [![npm version](https://badge.fury.io/js/norrisbot.svg)](http://badge.fury.io/js/norrisbot) [![codecov](https://codecov.io/gh/lmammino/norrisbot/branch/master/graph/badge.svg)](https://codecov.io/gh/lmammino/norrisbot)
+[![Known Vulnerabilities](https://snyk.io/test/github/lmammino/norrisbot/badge.svg)](https://snyk.io/test/github/lmammino/norrisbot)
 
 ## Make your team hyper-productive with cutting Chuck Norris jokes
 
@@ -55,6 +56,74 @@ The NorrisBot is configurable through environment variables. There are several v
 | `NORRISBOT_MESSAGE_COLOR` | The hex color used by the bot to mark it's messages *(default: `"#590088"`)* |
 
 
+## Installing on Heroku
+
+A great place where to deploy our lovely NorrisBot is [Heroku](https://heroku.com). We can go reasonably well with their free worker tier and the deploy process is reasonably easy and convenient. Let’s see how we can do that.
+
+I am assuming you already have and account on Heroku and that you have installed and configured the [Heroku toolbelt](https://devcenter.heroku.com/articles/heroku-cli) on your machine.
+
+### 1. Create a new Heroku app
+
+Create a local folder and install norrisbot on it:
+
+```bash
+mkdir norrisbot-myorg
+cd norrisbot-myorg
+npm init -y
+npm i --save norrisbot
+```
+
+Then create a new app on heroku:
+
+```bash
+heroku create norrisbot-myorg
+```
+
+### 2. Configure your Heroku app:
+
+```bash
+heroku config:set --app norrisbot-myorg NORRISBOT_TOKEN=xoxb-YOUR-AWESOME-BOT-TOKEN
+```
+
+(of course you need to replace `xoxb-YOUR-AWESOME-BOT-TOKEN` with your actual token).
+
+You can add extra configuration by defining values for the [other supported environment variables](#configuration) if you want to customize the behavior of the bot.
+
+### 3. Initialize your Heroku app
+
+Create an Heroku `Procfile` (service definition)
+
+```bash
+echo "worker: node_modules/.bin/norrisbot" >> Procfile
+```
+
+Then prepare the project to be published through git:
+
+```bash
+git init
+echo "node_modules/" >> .gitignore
+git add --all
+git commit -am "first version"
+heroku git:remote --app norrisbot-myorg
+```
+
+### 4. Publish and launch the Heroku app
+
+Through heroku git
+
+```bash
+git push heroku master
+```
+
+Stop the web app (not present but started by default by Heroku) and run the worker:
+
+```bash
+heroku ps:scale web=0 worker=1
+```
+
+That's it, now go on your Slack organization and start enjoying Chuck Norris jokes! 😂
+
+
 ## Building the bot from source
 
 If you downloaded the source code of the bot you can build the bot with
@@ -80,6 +149,8 @@ If you find a bug or have an idea about how to improve the NorrisBot you can [op
 ## The Making of
 
 Version 1 of NorrisBot has been developed in collaboration with [Scotch.io](https://scotch.io). A [very detailed article](https://scotch.io/tutorials/building-a-slack-bot-with-node-js-and-chuck-norris-super-powers) has been published to explain every single line of code. It also explains you how to deploy the bot on a free Heroku instance, so you should give it a shot!
+
+[![Building a Slack Bot with Node.js and Chuck Norris Super Powers](https://scotch.io/wp-content/uploads/2015/09/build-a-slack-bot-with-node-and-chuck-norris-super-powers.png)](https://scotch.io/tutorials/building-a-slack-bot-with-node-js-and-chuck-norris-super-powers)
 
 Enjoy your reading!
 
