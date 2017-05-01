@@ -4,7 +4,7 @@ const request = require('request-promise');
 
 const USER_AGENT = 'publish-release-script-1';
 const GH_API_ENDPOINT = 'https://api.github.com';
-const GH_UPLOAD_URL = 'https://api.github.com/repos/lmammino/norrisbot/releases';
+const GH_UPLOAD_URL = id => `https://uploads.github.com/repos/lmammino/norrisbot/releases/${id}/assets`;
 
 const token = process.argv[2];
 const repo = process.argv[3];
@@ -12,6 +12,27 @@ const release = process.argv[4];
 const buildFolder = process.argv[5] || './build';
 
 console.log(`Creating release "${release}" from "${buildFolder}"`);
+
+const uploadFile = releaseId => file => new Promise((resolve, reject) => {
+  console.log('attaching', file.path);
+  return fs.readFile(file.path, 'binary', (error, buffer) => {
+    if (error) {
+      return reject(error);
+    }
+
+    return resolve(request.post({
+      body: buffer,
+      url: `${GH_UPLOAD_URL(releaseId)}?name=${file.name}`,
+      headers: {
+        'User-Agent': USER_AGENT,
+        'Content-Type': 'application/octet-stream',
+        Authorization: `token ${token}`,
+      },
+    }));
+  });
+});
+
+let releaseId;
 
 request({
   uri: `${GH_API_ENDPOINT}/repos/${repo}/releases`,
@@ -28,9 +49,8 @@ request({
 })
 .then((response) => {
   const data = JSON.parse(response);
+  releaseId = data.id;
   console.log(`Created release: ${data.url}`);
-
-  const uploadUrl = `${GH_UPLOAD_URL}/${data.id}`;
 
   return new Promise((resolve, reject) => {
     fs.readdir(buildFolder, (err, items) => {
@@ -38,27 +58,16 @@ request({
         return reject(err);
       }
 
-      return resolve(Promise.all(items.map((item) => {
-        const file = fs.createReadStream(path.join(buildFolder, item));
-
-        return request({
-          uri: `${uploadUrl}?name=${item}`,
-          method: 'POST',
-          body: file,
-          headers: {
-            'User-Agent': USER_AGENT,
-            'Content-Type': 'application/octet-stream',
-            Authorization: `token ${token}`,
-          },
-        });
+      return resolve(items.map(item => ({
+        name: item,
+        path: path.resolve(path.join(buildFolder, item)),
       })));
     });
   });
 })
-.then((data) => {
+.then(files => Promise.all(files.map(uploadFile(releaseId))))
+.then(() => {
   console.log('✅  Done');
-
-  console.log(data);
 })
 .catch((err) => {
   console.error('Failed to create release', err);
