@@ -15,7 +15,7 @@ console.log(`Creating release "${release}" from "${buildFolder}"`);
 
 const uploadFile = releaseId => file => new Promise((resolve, reject) => {
   console.log('attaching', file.path);
-  return fs.readFile(file.path, 'binary', (error, buffer) => {
+  return fs.readFile(file.path, (error, buffer) => {
     if (error) {
       return reject(error);
     }
@@ -25,7 +25,7 @@ const uploadFile = releaseId => file => new Promise((resolve, reject) => {
       url: `${GH_UPLOAD_URL(releaseId)}?name=${file.name}`,
       headers: {
         'User-Agent': USER_AGENT,
-        'Content-Type': 'application/octet-stream',
+        'Content-Type': 'application/zip',
         Authorization: `token ${token}`,
       },
     }));
