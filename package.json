@@ -1,6 +1,6 @@
 {
   "name": "norrisbot",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "a Slack bot that kicks asses (roundhouse-kicks to be accurate...)",
   "keywords": [
     "Slack",
@@ -27,7 +27,9 @@
     "lint": "eslint src tests",
     "test:unit": "jest tests/* --coverage --verbose",
     "test": "npm run lint && npm run test:unit",
-    "release:tag": "git tag $npm_package_version && git push --tags"
+    "release:tag": "git tag $npm_package_version && git push --tags",
+    "package:create": "pkg . -t node7-win,node7-macos,node7-linux --out-dir build",
+    "package:publish": "node publish-release $GITHUB_TOKEN lmammino/norrisbot $npm_package_version"
   },
   "author": {
     "name": "Luciano Mammino",
@@ -54,6 +56,8 @@
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
     "jest": "^19.0.2",
+    "pkg": "^3.0.0",
+    "request-promise": "^4.2.0",
     "rimraf": "^2.6.1"
   }
 }
