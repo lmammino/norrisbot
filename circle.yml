@@ -20,5 +20,4 @@ test:
   post:
     - cp -r coverage/lcov-report  $CIRCLE_TEST_REPORTS/coverage
     - codecov
-    - if [ $CIRCLE_BRANCH = 'master' ]; then npm run build && npm run package:create; fi
-    - if [ $CIRCLE_BRANCH = 'master' ]; then npm run package:publish && npm publish; fi
+    - if [ $CIRCLE_BRANCH = 'master' ]; then npm run build && npm run package:create && npm run package:publish && npm publish; fi

@@ -1,7 +1,7 @@
 {
   "name": "norrisbot",
-  "version": "2.0.3",
-  "description": "a Slack bot that kicks asses (roundhouse-kicks to be accurate...)",
+  "version": "2.0.4",
+  "description": "A Slack bot that kicks asses (roundhouse-kicks to be accurate...)",
   "keywords": [
     "Slack",
     "bot",
