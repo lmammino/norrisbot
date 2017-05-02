@@ -38,3 +38,4 @@ yarn.lock
 .editorconfig
 .gitignore
 .babel_cache/
+build/

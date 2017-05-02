@@ -12,6 +12,7 @@ dependencies:
     - yarn
   cache_directories:
     - ~/.cache/yarn
+    - ~/.pkg-cache
 
 test:
   override:
@@ -19,5 +20,5 @@ test:
   post:
     - cp -r coverage/lcov-report  $CIRCLE_TEST_REPORTS/coverage
     - codecov
-    - if [ $CIRCLE_BRANCH = 'master' ]; then npm run build; fi
-    - if [ $CIRCLE_BRANCH = 'master' ]; then npm run release:tag && npm publish; fi
+    - if [ $CIRCLE_BRANCH = 'master' ]; then npm run build && npm run package:create; fi
+    - if [ $CIRCLE_BRANCH = 'master' ]; then npm run package:publish && npm publish; fi
