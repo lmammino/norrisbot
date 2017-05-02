@@ -23,6 +23,11 @@ $ npm install -g norrisbot
 ```
 
 
+### Alternative Installation (binaries)
+
+From release 2.0.3, every release comes also with dependency-free binaries for linux, mac and windows that can be downloaded in the [Releases page on GitHub](https://github.com/lmammino/norrisbot/releases).
+
+
 ## Running the NorrisBot
 
 To run the NorrisBot you must have a valid Slack [BOT token](#getting-the-bot-token-for-your-slack-channel) to authenticate the bot on your slack organization. Once you get it (instructions on the next paragraph) you just have to run:
