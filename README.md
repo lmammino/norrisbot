@@ -37,6 +37,8 @@ To run the NorrisBot you must have a valid Slack [BOT token](#getting-the-bot-to
 NORRISBOT_TOKEN=somesecretkey norrisbot
 ```
 
+Once the bot is up and running, you need to invite him into the channels you want it to be available in.
+
 
 ## Getting the BOT token for your Slack channel
 
