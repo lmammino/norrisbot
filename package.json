@@ -29,7 +29,9 @@
     "test": "npm run lint && npm run test:unit",
     "release:tag": "git tag $npm_package_version && git push --tags",
     "package:create": "pkg . -t node7-win,node7-macos,node7-linux --out-dir build",
-    "package:publish": "node publish-release $GITHUB_TOKEN lmammino/norrisbot $npm_package_version"
+    "package:publish": "node publish-release $GITHUB_TOKEN lmammino/norrisbot $npm_package_version",
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
   },
   "author": {
     "name": "Luciano Mammino",
@@ -42,7 +44,8 @@
   "dependencies": {
     "@slack/client": "^3.9.0",
     "chalk": "^1.1.3",
-    "winston": "^2.3.1"
+    "winston": "^2.3.1",
+    "snyk": "^1.319.1"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -59,5 +62,6 @@
     "pkg": "^3.0.0",
     "request-promise": "^4.2.0",
     "rimraf": "^2.6.1"
-  }
+  },
+  "snyk": true
 }
